@@ -6,7 +6,8 @@
 #include <vector>
 #include <iomanip>
 #include <random>
-
+#include <map>
+#include <fstream>
 
 
 char* convertDecToBin(int number){
@@ -90,11 +91,8 @@ void buildTree(int height){
 }
 
 void randFill(float* ar, int N) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0, 10);
     for (int i = 0; i < N; i++) {
-        ar[i] = dis(gen);
+        ar[i] = (rand())%100;
     }
 }
 
@@ -111,6 +109,62 @@ std::vector<float> averStr2DArray(const float* ar, int colCount, int rowCount) {
     return result;
 }
 
-void WorkWithFile::readFromFile(const char* fileName){
+void WorkWithFile::readFromFile(const char* fileName) {
+    std::string line;
+    std::ifstream in(fileName);
+    std::string* data = new std::string();
+    if (in.is_open()) {
+        while (getline(in, line)) {
+            data->append(line);
+        }
+    }
+    in.close();
+    dataOfFile = (char*)data->c_str();
+}
+void WorkWithFile::writeStatInfoToFile(const char* outFile) {
+    std::map<char, int> m;
 
+    for (int i = 0;*(dataOfFile+i) != '\0'; i++) {
+        if (m.find(*(dataOfFile + i)) == m.end()) {
+            m[*(dataOfFile + i)] = 1;
+        }
+        else {
+            m[*(dataOfFile + i)] += 1;
+        }
+    }
+    std::ofstream out(outFile);
+    if (out.is_open()) {
+        for (auto const& item : m)
+        {
+            out << item.first << '\t' << item.second << std::endl;
+        }
+    }
+    out.close();
+}
+
+void WorkWithFile::prepareTestFile(const char* fileName) {
+    char alphabet[26] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
+                          'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                          'o', 'p', 'q', 'r', 's', 't', 'u',
+                          'v', 'w', 'x', 'y', 'z'};
+
+    std:: string res = "";
+    for (int i = 0; i < 256; i++)
+        res = res + alphabet[rand() % 26];
+    std::ofstream out(fileName);
+    if (out.is_open()) {
+        out << res << std::endl;
+    }
+    out.close();
+
+}
+
+
+WorkWithFile::WorkWithFile() {
+    prepareTestFile("sourceFile_task1.txt");
+    readFromFile("sourceFile_task1.txt");
+}
+
+WorkWithFile::~WorkWithFile() {
+    delete[] dataOfFile;
 }
