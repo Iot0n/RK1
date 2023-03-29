@@ -7,6 +7,8 @@
 #include <iomanip>
 #include <random>
 
+
+
 char* convertDecToBin(int number){
     char binnaryboof[64];
     int num = 0;
@@ -37,8 +39,6 @@ char* convertBinToHex(const char* binNum){
     for (int i = 0; i < 64; i++)
         binboof[i] = '0';
     int size = strlen(binNum);
-//    while (binNum[size] == 0 || binNum[size] == 1)
-//        size++;
     int num = size;
     for (int i = 0; i < num; i++){
         binboof[i] = binNum[size-1];
@@ -109,4 +109,8 @@ std::vector<float> averStr2DArray(const float* ar, int colCount, int rowCount) {
         result.push_back(average);
     }
     return result;
+}
+
+void WorkWithFile::readFromFile(const char* fileName){
+
 }

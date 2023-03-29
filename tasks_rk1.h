@@ -3,6 +3,19 @@
 
 #include <vector>
 
+class WorkWithFile {
+private :
+    char* dataOfFile;
+    void readFromFile(const char* fileName);	//функция чтения из файла
+    void prepareTestFile(const char* fileName);	//функция для создания тестового файла
+
+public :
+    WorkWithFile();
+    ~WorkWithFile();
+
+    void writeStatInfoToFile(const char* outFile);
+};
+
 char* convertDecToBin(int number);
 
 void writeToFile(const char& fileName, const char* strNum);

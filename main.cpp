@@ -9,7 +9,7 @@
 
 void task_2(){
     char *binnary;
-    binnary = convertDecToBin(19);
+    binnary = convertDecToBin(134);
     std::cout << binnary;
     writeToFile(*"result_task2.txt", binnary);
     delete[] binnary;
