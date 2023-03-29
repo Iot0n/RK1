@@ -13,16 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dd877fe-f61e-4d22-b16c-b1c520eaf0ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result_task2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result_task3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result_task5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rk1.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tasks_rk1.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks_rk1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_rk1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680069437965</updated>
       <workItem from="1680069439898" duration="6154000" />
-      <workItem from="1680117324680" duration="677000" />
+      <workItem from="1680117324680" duration="1276000" />
     </task>
     <servers />
   </component>
