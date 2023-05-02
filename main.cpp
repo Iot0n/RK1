@@ -7,6 +7,11 @@
 #include <vector>
 #include <random>
 
+/*void task_1(){
+    WorkWithFile();
+    WorkWithFile::writeStatInfoToFile();
+};*/
+
 void task_2(){
     char *binnary;
     binnary = convertDecToBin(134);
@@ -17,7 +22,7 @@ void task_2(){
 
 void task_3(){
     char *hex;
-    const char arr[] = {"11010111000010101"};
+    const char arr[] = {"000000000000000111000001100000000010100001111011011101"};
     hex = convertBinToHex(arr);
         std::cout << hex;
     writeToFile(*"result_task3.txt", hex);
@@ -44,12 +49,13 @@ void task_5() {
 }
 
 int main() {
-    task_2();
-    std::cout << std::endl;
+//    task_2();
+//    std::cout << std::endl;
     task_3();
-    std::cout << std::endl;
-    task_4();
-    std::cout << std::endl;
-    task_5();
+//    std::cout << std::endl;
+//    task_4();
+//    std::cout << std::endl;
+//    task_5();
+
     return 0;
 }

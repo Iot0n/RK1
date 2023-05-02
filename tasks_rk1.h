@@ -3,6 +3,8 @@
 
 #include <vector>
 
+
+
 class WorkWithFile {
 private :
     char* dataOfFile;

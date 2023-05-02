@@ -5,7 +5,6 @@
 #include <cstring>
 #include <vector>
 #include <iomanip>
-#include <random>
 #include <map>
 #include <fstream>
 
@@ -68,11 +67,18 @@ char* convertBinToHex(const char* binNum){
     }
     char *hex = new char[size_hex];
     num = size_hex;
+    int count = 0;
     for (int i = 0; i < size_hex; i ++){
-        hex[i] = hexboof[num-1];
+	if (hexboof[num-1] == 48 && i == 0){
+		num--;
+		i--;
+		count++;
+		continue;
+	}
+	hex[i] = hexboof[num-1];
         num--;
     }
-    hex[size_hex] = '\0';
+    hex[size_hex - count] = '\0';
     delete[] hexboof;
     return hex;
 }
@@ -120,7 +126,9 @@ void WorkWithFile::readFromFile(const char* fileName) {
     }
     in.close();
     dataOfFile = (char*)data->c_str();
+    delete data;
 }
+
 void WorkWithFile::writeStatInfoToFile(const char* outFile) {
     std::map<char, int> m;
 
@@ -158,7 +166,6 @@ void WorkWithFile::prepareTestFile(const char* fileName) {
     out.close();
 
 }
-
 
 WorkWithFile::WorkWithFile() {
     prepareTestFile("sourceFile_task1.txt");
