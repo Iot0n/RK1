@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <map>
 #include <fstream>
-
+#include <stack>
 
 char* convertDecToBin(int number){
     char binnaryboof[64];
@@ -174,4 +174,28 @@ WorkWithFile::WorkWithFile() {
 
 WorkWithFile::~WorkWithFile() {
     delete[] dataOfFile;
+}
+
+bool checkBrackets (const char* str){
+	std::stack<char> stc;
+for (int i = 0; *(str + i) != '\0'; i++) {
+if (*(str + i) == '(' || *(str + i) == '<' || *(str + i) == '{' || *(str + i) == '[') {
+	stc.push(*(str +i));
+}
+else if (!stc.empty()) {
+if (*(str + i) == ')' && stc.top() == '(') {
+	stc.pop();
+}
+else if (*(str + i) == '}' && stc.top() == '{') {
+	stc.pop();
+}
+else if (*(str + i) == '>' && stc.top() == '<') {
+	stc.pop();
+}
+else if (*(str + i) == ']' && stc.top() == '[') {
+	stc.pop();
+			}
+		}
+	}
+return stc.empty();
 }

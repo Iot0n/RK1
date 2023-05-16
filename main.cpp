@@ -48,10 +48,17 @@ void task_5() {
     fout.close();
 }
 
+void test_brackets(){
+	const char *str = "{{({)[]()}}}";
+	bool res = checkBrackets(str);
+	std::cout << res;
+}
+
 int main() {
+//    test_brackets();
 //    task_2();
 //    std::cout << std::endl;
-    task_3();
+//    task_3();
 //    std::cout << std::endl;
 //    task_4();
 //    std::cout << std::endl;

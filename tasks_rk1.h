@@ -30,4 +30,6 @@ std::vector<float> averStr2DArray(const float* ar, int colCount, int rowCount);
 
 void randFill(float* ar, int N);
 
+bool checkBrackets (const char* str);
+
 #endif //RK1_TASKS_RK1_H
