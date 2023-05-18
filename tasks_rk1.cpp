@@ -118,20 +118,16 @@ std::vector<float> averStr2DArray(const float* ar, int colCount, int rowCount) {
 void WorkWithFile::readFromFile(const char* fileName) {
     std::string line;
     std::ifstream in(fileName);
-    std::string* data = new std::string();
     if (in.is_open()) {
         while (getline(in, line)) {
-            data->append(line);
+            strcat(dataOfFile, line.c_str());
         }
     }
     in.close();
-    dataOfFile = (char*)data->c_str();
-    delete data;
 }
 
 void WorkWithFile::writeStatInfoToFile(const char* outFile) {
     std::map<char, int> m;
-
     for (int i = 0;*(dataOfFile+i) != '\0'; i++) {
         if (m.find(*(dataOfFile + i)) == m.end()) {
             m[*(dataOfFile + i)] = 1;
@@ -150,9 +146,10 @@ void WorkWithFile::writeStatInfoToFile(const char* outFile) {
     out.close();
 }
 
+
 void WorkWithFile::prepareTestFile(const char* fileName) {
     char alphabet[26] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
-                          'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                         'h', 'i', 'j', 'k', 'l', 'm', 'n',
                           'o', 'p', 'q', 'r', 's', 't', 'u',
                           'v', 'w', 'x', 'y', 'z'};
 
@@ -199,3 +196,29 @@ else if (*(str + i) == ']' && stc.top() == '[') {
 	}
 return stc.empty();
 }
+
+std::vector<int> stringSplit(const std::string& str) {
+std::stringstream input(str);
+std::string data;
+std::vector<int> result;
+while (std::getline(input, data, ' ')) {
+result.push_back(std::stoi(data));
+}
+return result;
+}
+
+std::vector<std::vector<int>> readMatrixFromFile(const char* file) {
+std::ifstream in(file);
+std::vector<std::vector<int>> res;
+std::string line;
+if (in.is_open()) {
+while (getline(in, line)) {
+res.push_back(stringSplit(line));
+
+}
+}
+in.close();
+return res;
+}
+
+
