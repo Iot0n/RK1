@@ -70,7 +70,6 @@ public:
 	
 };
 
-
 void writeToFile(const char& fileName, const char* strNum);
 
 char* convertBinToHex(const char* binNum);
@@ -82,5 +81,14 @@ std::vector<float> averStr2DArray(const float* ar, int colCount, int rowCount);
 void randFill(float* ar, int N);
 
 bool checkBrackets (const char* str);
+
+void sourceFileTask1(const char* fileName);
+
+struct charcount {
+	char symbol;
+	int counter;
+};
+
+void sourceFileTask1(const char* fileName);
 
 #endif //RK1_TASKS_RK1_H
