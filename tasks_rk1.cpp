@@ -8,32 +8,41 @@
 #include <map>
 #include <fstream>
 #include <stack>
+#include <cmath>
 
 
 char* convertDecToBin(int number){
-    char binnaryboof[64];
-    int num = 0;
-    while (number) {
-        if (number % 2 == 1)
-            binnaryboof[num] = '1';
-        else
-            binnaryboof[num] = '0';
-        number /= 2;
-        num++;
+	int bits{0};
+	int kolvo{1};
+	for (int i{0}; i < 32; i++){
+		if (abs(number) < kolvo)
+			break;
+		bits++;
+		kolvo *= 2;
+	}
+	char *binnary = new char[32]{};
+    int size {sizeof(number)};
+    int res {0b0};
+    int rs {0b0000'0001};
+    for (int i {0}; i < bits+1 ; i++){
+	    res = number&rs;
+	    binnary[bits-i] = res + 48;
+	    number = number >> 1;
     }
-    char *binnary = new char[num+1];
-    binnary[num] = '\0';
-    for (int i = 0; num>0; i++, num--)
-        binnary[i] = binnaryboof[num-1];
+    binnary[bits+1] = '\0';
     return binnary;
 }
 //1
-void writeToFile(const char& fileName, const char* strNum){
-    FILE* f;
-    f = fopen(&fileName, "w");
-        fprintf(f, "%s\n", strNum);
-    fclose(f);
-}
+void writeToFile(const char* fileName, const char* strNum){
+    std::ofstream out(fileName);
+    if (out.is_open()) {
+        out << strNum << std::endl;
+    }
+    else {
+        std::cout << "File not open!" << std::endl;
+    }
+    out.close();
+    }
 //2
 char* convertBinToHex(const char* binNum){
     char binboof[64] = {};

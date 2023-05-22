@@ -70,7 +70,7 @@ public:
 	
 };
 
-void writeToFile(const char& fileName, const char* strNum);
+void writeToFile(const char* fileName, const char* strNum);
 
 char* convertBinToHex(const char* binNum);
 
