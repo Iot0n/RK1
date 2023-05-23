@@ -2,6 +2,7 @@
 #include "cstdio"
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <cstring>
 #include <vector>
 #include <iomanip>
@@ -9,6 +10,7 @@
 #include <fstream>
 #include <stack>
 #include <cmath>
+#include <tuple>
 
 
 char* convertDecToBin(int number){
@@ -21,9 +23,8 @@ char* convertDecToBin(int number){
 		kolvo *= 2;
 	}
 	char *binnary = new char[32]{};
-    int size {sizeof(number)};
     int res {0b0};
-    int rs {0b0000'0001};
+    int rs {0b00000001};
     for (int i {0}; i < bits+1 ; i++){
 	    res = number&rs;
 	    binnary[bits-i] = res + 48;
@@ -208,8 +209,8 @@ else if (*(str + i) == ']' && stc.top() == '[') {
 return stc.empty();
 }
 //12
-std::vector<int> stringSplit(const std::string& str) {
-std::stringstream input(str);
+std::vector<int> stringSplit(const std::string& strw) {
+std::stringstream input(strw);
 std::string data;
 std::vector<int> result;
 while (std::getline(input, data, ' ')) {
@@ -341,10 +342,10 @@ void LinkedList::insert(int value, int position) {
 }
 //24
 void colculateMatrix(const char* file) {
-    std::vector<std::vector<int>> mat1 = readMatrixFromFile("matrix_1.txt");
-    int sizeMat1 = 0;
-    for (int i = 0; i < mat1.size(); i++) {
-        if (i == 0) {
+    std::vector<std::vector<int> > mat1 = readMatrixFromFile(file);
+    size_t sizeMat1 {};
+    for (size_t i {}; i < mat1.size(); i++) {
+        if (!i) {
             sizeMat1 = mat1[i].size();
         }
         else {
@@ -356,13 +357,15 @@ void colculateMatrix(const char* file) {
     }
 }
 //25
-std::vector< std::pair<int, int >> findPairs(std::vector<int> ar, int A) {
+std::vector< std::pair<int, int > > findPairs(std::vector<int> ar, int A) {
     std::map<int, int> masA{
 
     };
+	
+	int findValue {};
 
-    for (int i = 0; i < ar.size(); i++) {
-        int findValue = A - ar[i];
+    for (size_t i = 0; i < ar.size(); i++) {
+        findValue = A - ar[i];
         if (masA.find(findValue) == masA.end()) {
             masA[ar[i]] = i;
         }
@@ -373,16 +376,15 @@ std::vector< std::pair<int, int >> findPairs(std::vector<int> ar, int A) {
             };
         }
     }
-    int m = 0;
-    int findValue;
+    int m {};
     std::vector<int> keys;
     for (std::map<int, int> ::iterator it = masA.begin(); it != masA.end(); it++) {
         keys.push_back(it->first);
     }
     while (true) {
         m++;
-        for (int i = 0; i < keys.size(); i++) {
-            for (int j = i + 1; j < keys.size(); j++) {
+        for (size_t i = 0; i < keys.size(); i++) {
+            for (size_t j = i + 1; j < keys.size(); j++) {
                 if (keys[i] + keys[j] == A + m || keys[i] + keys[j] == A - m) {
                     return std::vector< std::pair<int, int >>{
                         std::pair<int, int>{keys[i], masA[keys[i]]},

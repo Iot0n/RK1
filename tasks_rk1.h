@@ -49,18 +49,18 @@ public:
 	void writeToFileFromHead();
 };
 
-std::vector<std::vector<int>> readMatrixFromFile(const char* file);
+std::vector<std::vector<int> > readMatrixFromFile(const char* file);
 
 std::vector<int> stringSplit(const std::string& str);
 
 void colculateMatrix(const char* file);
 
-std::vector<std::pair<int, int>> findPairs(std::vector<int> ar, int A);
+std::vector<std::pair<int, int> > findPairs(std::vector<int> ar, int A);
 
 class StudentInfo {
 private:
 	std::tuple<std::string, std::string, char*> infoStudent;
-	std::map<std::string, std::pair<std::list<int>, float >> subjMark;
+	std::map<std::string, std::pair<std::list<int>, float > > subjMark;
 public:
 	int addMark(const std::string& subjName, int mark, bool addSubj = false);
 	int addSubj(const std::string& subjName);
